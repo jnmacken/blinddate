@@ -1,3 +1,6 @@
+#mainheading { background-color:#EFEFEF; }
+#interchange { background-color:#FF00CC; }
+
 #video { position:relative; }
 #video-local { z-index:2; position:absolute; bottom:10px; right:10px; }
 #video-remote { z-index:1; }
