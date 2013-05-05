@@ -3,7 +3,7 @@ var app = app || {};
 
 (function ($) {
 
-	app.ProfileView = Backbone.View.extend({
+japp.ProfileView = Backbone.View.extend({
 
 		template: _.template($('#profile-template').html()),
 
@@ -11,11 +11,10 @@ var app = app || {};
 			'click #psave': 'save',
 		},
 
-		render: function () {
+		render: function (eventName) {
 			this.$el.html(
 				this.template(
-					{ 'name':'Jim', 'age':17 }
-					//this.model.toJSON()
+					this.model.toJSON()
 				)
 			);
 			return this;

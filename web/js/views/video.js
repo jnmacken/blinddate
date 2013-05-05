@@ -23,7 +23,7 @@ var app = app || {};
 				});
 
 				rtc.connect(
-					'ws://' + window.location.href.substring(window.location.protocol.length).split('/')[2] + ':3000',
+					'ws://' + window.location.href.substring(window.location.protocol.length).split(':')[0] + ':3000',
 					'12345'
 				);
 
