@@ -12,14 +12,13 @@ var app = app || {};
 		},
 
 		initialize: function() {
-			this.model = profiles.fetch('1');
-			this.listenTo(this.model, 'change', this.render);
+			this.listenTo(this.profile, 'change', this.render);
 		},
 
 		render: function (eventName) {
 			$(this.el).html(
 				this.template(
-					this.model.toJSON()
+					this.profile.toJSON()
 				)
 			);
 			return this;
