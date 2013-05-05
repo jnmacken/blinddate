@@ -97,15 +97,15 @@ var populateDB = function() {
     var profiles = [
     {
         name: "ANDREW DAVIDSON",
-        age: "20",
+        year: "20",
     },
     {
         name: "OWEN SMITH",
-        age: "21",
+        year: "21",
     },
     {
         name: "JOSH MACKENZIE",
-        age: "20",
+        year: "20",
     }];
  
     db.collection('profiles', function(err, collection) {
