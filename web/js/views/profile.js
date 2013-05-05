@@ -21,7 +21,6 @@ var app = app || {};
 		},
 
 		save: function () {
-			
 		},
 
 	});
