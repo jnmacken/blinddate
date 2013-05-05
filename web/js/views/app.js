@@ -9,7 +9,7 @@ var app = app || {};
 		el: '#bdapp',
 
 		events: {
-			'click #goprof': 'switchprof',
+			'click .goprof': 'switchprof',
 		},
 		
 		initialize: function() {
