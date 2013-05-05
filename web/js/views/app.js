@@ -8,10 +8,16 @@ var app = app || {};
 
 		el: '#bdapp',
 
+		initialize: function() {
+
+			this.render();
+
+		},
+
 		render: function () {
 
 			this.$el.append(
-				new app.ProfileView.render().el
+				new app.ProfileView().render().el
 			);
 
 		},
