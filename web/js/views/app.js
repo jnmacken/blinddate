@@ -17,7 +17,7 @@ var app = app || {};
 		render: function () {
 
 			this.$el.append(
-				new app.ProfileView().render().el
+				new app.VideoView().render().el
 			);
 
 		},

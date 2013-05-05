@@ -8,7 +8,7 @@
 <body>
 
 	<div id="bdapp">
-
+		
 	</div>
 
 	<!-- templates -->
@@ -23,13 +23,22 @@
 		</div>
 	</script>
 
+	<script type="text/template" id="video-template">
+		<div id="video">
+			<div id="video-local"></div>
+			<div id="video-remote"></div>
+		</div>
+	</script>
+
 	<!-- libs -->
 	<script src="js/jquery-1.9.1.min.js"></script>
 	<script src="js/underscore.js"></script>
 	<script src="js/backbone.js"></script>
+	<script src="js/simplewebrtc.js"></script>
 
 	<!-- app -->
 	<script src="js/views/profile.js"></script>
+	<script src="js/views/video.js"></script>
 	<script src="js/views/app.js"></script>
 	<script src="js/app.js"></script>
 </body>
