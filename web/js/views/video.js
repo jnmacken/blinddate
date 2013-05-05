@@ -12,7 +12,7 @@ var app = app || {};
 
 			if (PeerConnection) {
 				rtc.createStream({
-					'video': {'mandatory': {}, 'optional': []},
+					'video': true,
 					'audio': true
 				}, function (stream) {
 					var video = document.createElement('video');
@@ -28,11 +28,11 @@ var app = app || {};
 				);
 
 				rtc.on('add remote stream', function (stream, socketId) {
-					var localVideo = document.getElementById('video-local');
-					var clone = localVideo.cloneNode(false);
-					clone.id = 'remote' + socketId;
-					rtc.attachStream(stream, clone.id);
-					$('#video-remote').append(clone);
+					var video = document.createElement('video');
+					video.id = socketId;
+					$('#video-remote').append(video);
+					rtc.attachStream(stream, video.id);
+					video.play();
 				});
 			}
 
