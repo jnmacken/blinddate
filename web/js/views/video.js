@@ -34,6 +34,9 @@ var app = app || {};
 					rtc.attachStream(stream, video.id);
 					video.play();
 				});
+rtc.on('disconnect stream', function (socketId) {
+$('#'+socketId).remove();
+});//)
 			}
 
 			return this;

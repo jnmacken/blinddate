@@ -15,7 +15,7 @@ var app = app || {};
 		initialize: function() {
 		
 			this.interchange = $('#interchange');
-			this.render();
+		//	this.render();
 		this.listenTo(app.profile, 'change', this.switchvideo);
 		},
 		
