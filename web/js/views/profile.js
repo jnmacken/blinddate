@@ -3,7 +3,7 @@ var app = app || {};
 
 (function ($) {
 
-japp.ProfileView = Backbone.View.extend({
+	app.ProfileView = Backbone.View.extend({
 
 		template: _.template($('#profile-template').html()),
 
