@@ -11,6 +11,12 @@ var app = app || {};
 			'click #psave': 'save',
 		},
 
+		initialize: function() {
+//			this.model = profiles.get;
+			this.listenTo(this.model, 'change', this.render);
+			this.listenTo(this.model, 'destroy', this.remove);
+		},
+
 		render: function (eventName) {
 			this.$el.html(
 				this.template(
