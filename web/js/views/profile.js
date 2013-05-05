@@ -24,6 +24,10 @@ var app = app || {};
 		},
 
 		save: function () {
+			app.profile.update({
+				'name':$('#pname').val(),
+				'year':$('#page').val()
+			});
 		},
 
 	});
