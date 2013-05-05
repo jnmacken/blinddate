@@ -16,7 +16,7 @@ var app = app || {};
 		
 			this.interchange = $('#interchange');
 			this.render();
-			this.listenTo(this.profile, 'change', this.switchvideo());
+		this.listenTo(app.profile, 'change', this.switchvideo);
 		},
 		
 		render: function () {
@@ -28,14 +28,14 @@ var app = app || {};
 		switchvideo: function() {
 		
 			this.interchange.children().remove();
-			this.interchange.children().append(new app.VideoView().render().el);
+			this.interchange.append(new app.VideoView().render().el);
 		
 		},
 		
 		switchprof: function() {
 		
 			this.interchange.children().remove();
-			this.interchange.children().append(new app.ProfileView({ profile: this.profile }).render().el);
+			this.interchange.append(new app.ProfileView().render().el);
 			
 		},
 
