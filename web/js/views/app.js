@@ -13,22 +13,24 @@ var app = app || {};
 		},
 		
 		initialize: function() {
-
+			
+			this.interchange = $('#interchange');
 			this.render();
 
 		},
 		
 		render: function () {
-
-			this.$el.append(
+		
+			this.interchange.append(
 				new app.VideoView().render().el
 			);
 
 		},
 		
 		switchprof: function() {
-			this.$el.children().remove();
-			this.$el.children().append(new app.ProfileView().render().el);
+		
+			this.interchange.children().remove();
+			this.interchange.children().append(new app.ProfileView().render().el);
 		},
 
 	});
