@@ -22,30 +22,21 @@ var app = app || {};
 					$('#video-local').append(video);
 				});
 
-				var loc = 'ws:'
-					+ window.location.href.substring(window.location.protocol.length).split(':')[0]
-						.split('/')[2]
-					+ ':3000/';
+				rtc.connect(
+					'ws://' + window.location.href.substring(window.location.protocol.length).split(':')[0] + ':3000',
+					'12345'
+				);
 
-				var socket = io.connect(loc, { resource : 'online' });
-				socket.on('connect', function() {
-					socket.emit('match', app.profile.id);
+				rtc.on('add remote stream', function (stream, socketId) {
+					var video = document.createElement('video');
+					video.id = socketId;
+					$('#video-remote').append(video);
+					rtc.attachStream(stream, video.id);
+					video.play();
 				});
-				socket.on('matched', function (room) {
-					rtc.connect(loc, room);
-
-					rtc.on('add remote stream', function (stream, socketId) {
-						var video = document.createElement('video');
-						video.id = socketId;
-						$('#video-remote').append(video);
-						rtc.attachStream(stream, video.id);
-						video.play();
-					});
-
-					rtc.on('disconnect stream', function (socketId) {
-						$('#'+socketId).remove();
-					});
-				});
+rtc.on('disconnect stream', function (socketId) {
+$('#'+socketId).remove();
+});//)
 			}
 
 			return this;

@@ -1,11 +1,9 @@
 var express = require('express'),
-    profile = require('./routes/profiles'),
-	uuid = require('node-uuid');
+    profile = require('./routes/profiles');
  
 var app = express()
 , server = require('http').createServer(app)
-, webRTC = require('webrtc.io').listen(server)
-, io = require('socket.io').listen(server);
+, webRTC = require('webrtc.io').listen(server); 
  
 app.configure(function () {
     app.use(express.logger('dev'));     /* 'default', 'short', 'tiny', 'dev' */
@@ -18,22 +16,31 @@ app.post('/api/profiles', profile.addprofile);
 app.put('/api/profiles/:id', profile.updateprofile);
 app.delete('/api/profiles/:id', profile.deleteprofile);
 
-io.of('/online').on('connection', function (socket) {
-	console.log('/online connection');
-	socket.on('match', function(id) {
-		console.log('match request from ' + id);
-		var match = findMatch(id);
-		if (match && match != socket) {
-				var room = uuid.v4();
-				socket.emit('matched', room);
-				match.emit('matched', room);
-		}
-	});
-});
+webRTC.rtc.on('chat_msg', function(data, socket) {
+		var roomList = webRTC.rtc.rooms[data.room] || [];
 
-var findMatch = function (id) {
-	return io.sockets[0];
-};
+		for (var i = 0; i < roomList.length; i++) {
+		var socketId = roomList[i];
+
+		if (socketId !== socket.id) {
+		var soc = webRTC.rtc.getSocket(socketId);
+
+		if (soc) {
+		soc.send(JSON.stringify({
+				"eventName": "receive_chat_msg",
+				"data": {
+				"messages": data.messages,
+				"color": data.color
+				}
+				}), function(error) {
+			if (error) {
+			console.log(error);
+			}
+			});
+		}
+		}
+		}
+});
 
 server.listen(3000);
 console.log('Listening on port 3000...');
