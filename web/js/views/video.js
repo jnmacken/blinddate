@@ -7,6 +7,10 @@ var app = app || {};
 
 		template: _.template($('#video-template').html()),
 
+		events: {
+			'click #notinterested': 'hidevideo',
+		},
+
 		render: function () {
 			this.$el.html(this.template());
 
@@ -40,6 +44,10 @@ $('#'+socketId).remove();
 			}
 
 			return this;
+		},
+
+		hidevideo: function () {
+			$('#video-remote video').remove();
 		},
 
 	});
