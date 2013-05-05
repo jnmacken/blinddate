@@ -27,11 +27,13 @@ var app = app || {};
 						.split('/')[2]
 					+ ':3000/';
 
-				var socket = io.connect(loc, { resource : 'online' });
-				socket.on('connect', function() {
+				var socket = io.connect(loc);
+//				socket.on('connect', function() {
 					socket.emit('match', app.profile.id);
-				});
+					console.log('emitted match');
+//				});
 				socket.on('matched', function (room) {
+					console.log('received matched');
 					rtc.connect(loc, room);
 
 					rtc.on('add remote stream', function (stream, socketId) {

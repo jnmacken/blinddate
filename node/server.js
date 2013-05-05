@@ -11,17 +11,21 @@ app.configure(function () {
     app.use(express.logger('dev'));     /* 'default', 'short', 'tiny', 'dev' */
     app.use(express.bodyParser());
 });
- 
+
+
 app.get('/api/profiles', profile.findAll);
 app.get('/api/profiles/:id', profile.findById);
 app.post('/api/profiles', profile.addprofile);
 app.put('/api/profiles/:id', profile.updateprofile);
 app.delete('/api/profiles/:id', profile.deleteprofile);
+app.use(express.static(__dirname + '/../web'));
 
-io.of('/online').sockets.on('connection', function (socket) {
+io.sockets.on('connection', function (socket) {
 	console.log('/online connection');
 	socket.on('match', function(id) {
+		console.log('match request from '+id);
 		var match = findMatch(id);
+		console.log(match);
 		if (match && match != socket) {
 				var room = uuid.v4();
 				socket.emit('matched', room);
