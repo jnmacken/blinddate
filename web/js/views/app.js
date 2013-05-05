@@ -8,18 +8,26 @@ var app = app || {};
 
 		el: '#bdapp',
 
+		events: {
+			'click #goprof': 'switchprof',
+		},
+		
 		initialize: function() {
 
 			this.render();
 
 		},
-
+		
 		render: function () {
 
 			this.$el.append(
 				new app.VideoView().render().el
 			);
 
+		},
+		
+		switchprof: function() {
+			this.$el.children().replacewith(new app.ProfileView().render().el)
 		},
 
 	});
