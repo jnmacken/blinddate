@@ -24,10 +24,11 @@ var app = app || {};
 		},
 
 		save: function () {
-			app.profile.update({
+			app.profile.set({
 				'name':$('#pname').val(),
 				'year':$('#page').val()
 			});
+			app.profile.save();
 		},
 
 	});
