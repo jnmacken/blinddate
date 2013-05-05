@@ -1,3 +1,5 @@
+var app = app || {};
+
 app.Profile = Backbone.Model.extend();
 
 app.ProfileCollection = Backbone.Collection.extend ({
