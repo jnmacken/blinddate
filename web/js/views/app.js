@@ -27,7 +27,8 @@ var app = app || {};
 		},
 		
 		switchprof: function() {
-			this.$el.children().replacewith(new app.ProfileView().render().el)
+			this.$el.children().remove();
+			this.$el.children().append(new app.ProfileView().render().el);
 		},
 
 	});
