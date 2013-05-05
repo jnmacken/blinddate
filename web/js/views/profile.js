@@ -12,13 +12,12 @@ var app = app || {};
 		},
 
 		initialize: function() {
-//			this.model = profiles.get;
+			this.model = profiles.fetch('1');
 			this.listenTo(this.model, 'change', this.render);
-			this.listenTo(this.model, 'destroy', this.remove);
 		},
 
 		render: function (eventName) {
-			this.$el.html(
+			$(this.el).html(
 				this.template(
 					this.model.toJSON()
 				)

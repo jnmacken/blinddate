@@ -1,11 +1,13 @@
 var app = app || {};
 
-app.Profile = Backbone.Model.extend();
+app.Profile = Backbone.Model.extend({
+urlRoot: "/api/profiles"});
 
 app.ProfileCollection = Backbone.Collection.extend ({
 	model : app.Profile,
-	url: "http://0.0.0.0:3000/profiles",
+	url: "/api/profiles",
 });
 
-var profiles = new app.ProfileCollection;
+var profiles = new app.ProfileCollection();
+profiles.fetch();
 

@@ -10,11 +10,11 @@ app.configure(function () {
     app.use(express.bodyParser());
 });
  
-app.get('/profiles', profile.findAll);
-app.get('/profiles/:id', profile.findById);
-app.post('/profiles', profile.addprofile);
-app.put('/profiles/:id', profile.updateprofile);
-app.delete('/profiles/:id', profile.deleteprofile);
+app.get('/api/profiles', profile.findAll);
+app.get('/api/profiles/:id', profile.findById);
+app.post('/api/profiles', profile.addprofile);
+app.put('/api/profiles/:id', profile.updateprofile);
+app.delete('/api/profiles/:id', profile.deleteprofile);
 
 webRTC.rtc.on('chat_msg', function(data, socket) {
 		var roomList = webRTC.rtc.rooms[data.room] || [];
