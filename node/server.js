@@ -18,9 +18,10 @@ app.post('/api/profiles', profile.addprofile);
 app.put('/api/profiles/:id', profile.updateprofile);
 app.delete('/api/profiles/:id', profile.deleteprofile);
 
-io.of('/online').sockets.on('connection', function (socket) {
+io.of('/online').on('connection', function (socket) {
 	console.log('/online connection');
 	socket.on('match', function(id) {
+		console.log('match request from ' + id);
 		var match = findMatch(id);
 		if (match && match != socket) {
 				var room = uuid.v4();
