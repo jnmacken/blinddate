@@ -16,6 +16,9 @@ var app = app || {};
 				autoRequestMedia: true,
 			});
 
+			this.rtc.on("readyToCall", function() {
+				this.rtc.joinRoom("asdfaasdf");
+				});
 			return this;
 		},
 

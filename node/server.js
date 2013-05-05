@@ -18,6 +18,7 @@ app.delete('/profiles/:id', profile.deleteprofile);
  
 io.sockets.on('connection', function (client) {
     // pass a message
+    console.log('client connect');
     client.on('message', function (details) {
         var otherClient = io.sockets.sockets[details.to];
 
@@ -72,5 +73,5 @@ io.sockets.on('connection', function (client) {
 
 
 
-app.listen(3000);
+server.listen(3000);
 console.log('Listening on port 3000...');
